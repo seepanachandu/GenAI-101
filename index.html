@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiger Facts</title>
+    <style>
+        body {
+            background-color: #e0f7e0; /* Light green background */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        button {
+            background-color: #4CAF50; /* Green button */
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        .fact {
+            margin-top: 20px;
+            font-size: 18px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .fact.visible {
+            opacity: 1; /* Fade in effect */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tiger Facts</h1>
+        <button id="factButton">Show Random Fact</button>
+        <p id="factDisplay" class="fact"></p>
+    </div>
+    <script>
+        const tigerFacts = [
+            "Tigers are the largest cat species in the world.",
+            "Each tiger has a unique pattern of stripes, much like a human fingerprint.",
+            "Tigers can swim and often enjoy playing in the water.",
+            "They are solitary animals, preferring to live and hunt alone.",
+            "Tigers can weigh up to 660 pounds (300 kg) and can reach lengths of up to 10 feet (3 meters).",
+            "Their roar can be heard up to 2 miles (3.2 kilometers) away.",
+            "Tigers primarily hunt at night and are known as crepuscular hunters.",
+            "They have excellent night vision, allowing them to see in low light conditions.",
+            "The Bengal tiger is the most numerous tiger subspecies, while the Sumatran tiger is the smallest.",
+            "Tigers are an endangered species, with habitat loss and poaching being the main threats to their survival."
+        ];
+
+        document.getElementById('factButton').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * tigerFacts.length);
+            const selectedFact = tigerFacts[randomIndex];
+            
+            const factDisplay = document.getElementById('factDisplay');
+            factDisplay.textContent = selectedFact;
+            factDisplay.classList.remove('visible'); // Reset opacity
+            void factDisplay.offsetWidth; // Trigger reflow
+            factDisplay.classList.add('visible'); // Fade in
+        });
+    </script>
+</body>
+</html>
